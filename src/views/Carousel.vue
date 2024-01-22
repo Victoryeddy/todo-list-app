@@ -38,12 +38,12 @@ import "vueperslides/dist/vueperslides.css";
 
 
 <template>
-  <carousel :items-to-show="2.5" >
-    <slide v-for="slide in 10" :key="slide" class="shadow-lg h-64" autoplay>
-      {{ slide }}
+  <carousel :items-to-show="2.5" autoplay="3000" wrapAround="true" class="mt-6">
+    <slide v-for="slide in pictures" :key="slide" class="shadow-lg" >
+     <v-img :src="require(`../assets/${slide}`)" class="w-100 h-100"></v-img>
     </slide>
 
-    <template #addons>
+    <template #addons >
       <navigation />
       <!-- <pagination /> -->
     </template>
@@ -66,47 +66,57 @@ export default {
     Pagination,
     Navigation,
   },
+
+  data(){
+    return{
+      pictures:["IMG_20191204_125919_595.jpg","IMG_20200427_184049.jpg", "IMG_20200427_184052.jpg", "IMG_20200427_184055.jpg", "photo-1547930021-87cf2913d809.jpeg", "photo-1554412655-a39393b82e65.jpeg", "photo-1500087350143-69a9e170092a.jpeg"]
+    }
+  }
 }
 </script>
 
 <style>
+
+/* *{
+  outline:1px solid green;
+} */
 .carousel__slide {
   padding: 5px;
 }
 
-/* .carousel__viewport {
+.carousel__viewport {
   perspective: 2000px;
-} */
+} 
 
-/* .carousel__track {
+.carousel__track {
   transform-style: preserve-3d;
-} */
+} 
 
-/* .carousel__slide--sliding {
+.carousel__slide--sliding {
   transition: 0.5s;
-} */
+} 
 
-/* .carousel__slide {
+ .carousel__slide {
   opacity: 0.9;
-  transform: rotateY(-20deg) scale(0.9);
-} */
+  transform: rotateY(20deg) scale(0.9);
+} 
 
 .carousel__slide--active ~ .carousel__slide {
   transform: rotateY(5deg) scale(0.9);
 }
 
-/* .carousel__slide--prev {
-  opacity: 1;
+ .carousel__slide--prev {
+  opacity: 0.8;
   transform: rotateY(-10deg) scale(0.95);
-}  */
+}  
 
-/* .carousel__slide--next {
-  opacity: 1;
+ .carousel__slide--next {
+  opacity: 0.8;
   transform: rotateY(10deg) scale(0.95);
 }
 
 .carousel__slide--active {
   opacity: 1;
   transform: rotateY(0) scale(1.1);
-} */
+} 
 </style>
